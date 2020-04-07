@@ -14,7 +14,7 @@ import ModalTitle from 'react-bootstrap/ModalTitle';
 const firebase = require('firebase');
 
 const LoginComponent = () => {
-  const [lor,setLor] = useState(false); // lorr = left or right
+  const [lor,setLor] = useState(true); // lorr = left or right
   const [name,setName] = useState(null);
   const [lastName,setLastName] = useState(null);
   const [email,setEmail] = useState(null);
@@ -23,29 +23,7 @@ const LoginComponent = () => {
 
   const history = useHistory();
 
-  const doRegist = () => {
-    // avaliate qualiti of data
-
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email,password)
-      .then(authRes => {
-        const userObj = {email,name,lastName}
-        firebase
-          .firestore()
-          .collection('users')
-          .doc(email)
-          .set(userObj)
-          .then(()=>{
-            history.push("/dashboard");
-        }, dbErr=>{
-          console.log(dbErr);
-      }, authErr => {
-        console.log(authErr);
-      });
-    })
-    setPassword(null);
-  }
+  
 
   const doLogin = async () => {
     

@@ -1,15 +1,15 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import {useHistory} from 'react-router-dom';
 
-class HomeComponent extends React.Component{
-  constructor(){
-    super();
-  }
+const firebase = require('firebase');
 
-  render(){
-    return (
-      <div>Home</div>
-    )
-  }
+const HomeComponent = () => {
+  const history = useHistory();
+
+  return (
+    <Button onClick={()=>history.push('dashboard')}>Log in</Button>
+  );
 }
 
 export default HomeComponent;

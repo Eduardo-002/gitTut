@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
+import { createBrowserHistory } from "history";
+import {Switch, Route, Router, Redirect} from 'react-router-dom';
 
 import HomeComponent from './Home/Home';
 import LoginComponent from './Login/Login';
-import DashboardComponent from './Dashboard/Dashboard'
+import Admin from "./layouts/Admin.js";
+
+import "./assets/css/material-dashboard-react.css?v=1.8.0";
 
 const firebase = require('firebase');
 require('firebase/firestore');
@@ -23,21 +22,16 @@ firebase.initializeApp({
   appId: "1:699724819078:web:a15f45b5863546d0b6ff07"
 });
 
-const routing = (
-  <Router>
+const hist = createBrowserHistory();
+
+ReactDOM.render(
+  <Router history={hist}>
     <Switch>
       <Route exact path='/'><HomeComponent/></Route>
       <Route path='/login'><LoginComponent/></Route>
-      <Route path='/dashboard'>dashboard</Route>
-      <Route>Couldn't find that page</Route>
+      <Route path="/admin" component={Admin} />
+      <Redirect from="/" to="/admin/dashboard" />
     </Switch>
-  </Router>
-)
-
-
-ReactDOM.render(routing,document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  </Router>,
+  document.getElementById('root')
+);
