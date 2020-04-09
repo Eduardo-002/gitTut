@@ -4,6 +4,8 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    background: '#ddd',
+    minHeight: window.innerHeight,
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
@@ -13,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    background: '#ddd',
   },
 }));
 

@@ -7,7 +7,10 @@ import useStyles from './Style';
 import AppBarComponent from './AppBarComponent/AppBarComponent';
 import DrawerComponent from './Drawer/Drawer';
 import NewsComponent from './News/News';
-//import classes from '*.module.css';
+
+import QualificacoesComponent from './Qualificacoes/Qualificacoes';
+import JogosComponent from './Jogos/Jogos';
+import PlantelComponent from './Plantel/Plantel';
 
 const firebase = require('firebase');
 
@@ -46,11 +49,17 @@ const Dashboard = (props) => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         {
-          window.location.pathname=='/dashboard/news' ?
+          window.location.pathname=='/dashboard/noticias' ?
           <NewsComponent news={news}/> :
           window.location.pathname=='/dashboard/ranking' ?
           "ranking" :
-          <Redirect from="/dashboard" to="/dashboard/news" />
+          window.location.pathname=='/dashboard/qualificacoes' ?
+          <QualificacoesComponent /> :
+          window.location.pathname=='/dashboard/jogos' ?
+          <JogosComponent /> :
+          window.location.pathname=='/dashboard/jogadores' ?
+          <PlantelComponent /> :
+          <Redirect from="/dashboard" to="/dashboard/noticias" />
         }
       </main>
     </div>

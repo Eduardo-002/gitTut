@@ -19,7 +19,7 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['News','Ranking'].map((text, index) => (
+        {['Noticias','Ranking'].map((text, index) => (
           <ListItem onClick={()=>{setMobileOpen(false);historyPush('/dashboard/'+text.toLowerCase())}} button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
@@ -28,8 +28,8 @@ function ResponsiveDrawer(props) {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
+        {['Qualificacoes','Jogos','Jogadores'].map((text, index) => (
+          <ListItem onClick={()=>{setMobileOpen(false);console.log('/dashboard/'+text.toLowerCase());historyPush('/dashboard/'+text.toLowerCase())}} button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
