@@ -11,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 function JogosComponent(props) {
-  
+  const {setJogoComponent,historyPush} = props;
   const classes = useStyles();
 
   function createData1(r,d,h,s,n,rc,c,cd) {
@@ -35,7 +35,7 @@ function JogosComponent(props) {
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableBody>
           {rows1.map((row,index) => (
-            <TableRow key={index}>
+            <TableRow key={index} onClick={()=>{setJogoComponent(row);historyPush('/dashboard/jogo')}}>
               {
                 row.map((col,index)=>(
                   <TableCell align="right" key={index}>{col}</TableCell>

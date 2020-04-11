@@ -11,6 +11,7 @@ import NewsComponent from './News/News';
 import QualificacoesComponent from './Qualificacoes/Qualificacoes';
 import JogosComponent from './Jogos/Jogos';
 import PlantelComponent from './Plantel/Plantel';
+import JogoComponent from './Jogo/Jogo';
 
 const firebase = require('firebase');
 
@@ -19,6 +20,7 @@ const Dashboard = (props) => {
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [news, setNews] = useState([]);
+  const [jogo, setJogo] = useState([]);
 
   const history = useHistory();
   const historyPush = (newPath) => {
@@ -42,6 +44,10 @@ const Dashboard = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
+  const  setJogoComponent = (_jogo) => {
+    setJogo(_jogo);
+  }
+
   return (
     <div className={classes.root}>
       <AppBarComponent handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen}/>
@@ -56,9 +62,11 @@ const Dashboard = (props) => {
           window.location.pathname=='/dashboard/qualificacoes' ?
           <QualificacoesComponent /> :
           window.location.pathname=='/dashboard/jogos' ?
-          <JogosComponent /> :
+          <JogosComponent setJogoComponent={setJogoComponent} historyPush={historyPush}/> :
           window.location.pathname=='/dashboard/jogadores' ?
           <PlantelComponent /> :
+          window.location.pathname=='/dashboard/jogo' ?
+          <JogoComponent _jogo={jogo} historyPush={historyPush}/> :
           <Redirect from="/dashboard" to="/dashboard/noticias" />
         }
       </main>
