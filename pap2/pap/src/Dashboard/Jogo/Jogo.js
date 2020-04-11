@@ -35,9 +35,16 @@ import GridListTile from '@material-ui/core/GridListTile';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
+
+
 function JogoComponent(props) {
   const {_jogo,historyPush} = props;
-  const classes = useStyles();
+
+  const theme = createMuiTheme();
+
+  
+
+  const classes = useStyles(theme);
 
   const jogo = {
     r: _jogo[0],
@@ -58,67 +65,53 @@ function JogoComponent(props) {
     goalsOut: 23
   }
 
-  const theme = createMuiTheme();
-
-  theme.typography.h4 = {
-    fontSize: '1.3rem',
-    '@media (min-width:600px)': {
-      fontSize: '1.7rem',
-    },
-    [theme.breakpoints.up('md')]: {
-      fontSize: '2.2rem',
-    },
-  };
+  
 
   return (
   <>
     {
-      //_jogo.length==0 ? 
-      //  historyPush('/dashboard/jogos') :
-      <ThemeProvider theme={theme}>
-        <Paper>
-          <Grid container className={classes.topGroup}>
-            <Grid item xs={4}>
-              <img mx='auto' className={classes.clubeAvatar} alt='clube' src='/static/images/clubes/mourisca.jpg'/>
-              <Typography align='center' variant='h4' component='p'>Mourisca</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography align='center'></Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <img mx='auto' className={classes.clubeAvatar} alt='clube' src='/static/images/clubes/alvarenga.png'/>
-              <Typography align='center' variant='h4' component='p'>Alvarenga</Typography>
-            </Grid>
-          </Grid>
-          <Divider/><Divider/><Divider/><Divider/>
-          <Grid container className={classes.root}>
-            <Grid item xs={4}>
-              <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.pointsHome}</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography align='center'>Pontos</Typography>
-              <LinearProgress variant="determinate" value={(data.pointsHome/(data.pointsHome+data.pointsOut))*100} />
-            </Grid>
-            <Grid item xs={4}>
-              <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.pointsOut}</Typography>
-            </Grid>
-          </Grid>
-          <Divider/>
-          <Grid container className={classes.root}>
-            <Grid item xs={4}>
-              <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.goalsHome}</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography align='center'>Golos</Typography>
-              <LinearProgress variant="determinate" value={(data.goalsHome/(data.goalsHome+data.goalsOut))*100} />
-            </Grid>
-            <Grid item xs={4}>
-              <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.goalsOut}</Typography>
-            </Grid>
-          </Grid>
-          <Divider/>
-        </Paper>
-      </ThemeProvider>
+<Paper>
+  <Grid container className={classes.topGroup}>
+    <Grid item xs={4}>
+      <img mx='auto' className={classes.clubeAvatar} alt='clube' src='/static/images/clubes/mourisca.jpg'/>
+      <Typography align='center' variant='h4' component='p'>Mourisca</Typography>
+    </Grid>
+    <Grid item xs={4}>
+      <Typography align='center'></Typography>
+    </Grid>
+    <Grid item xs={4}>
+      <img mx='auto' className={classes.clubeAvatar} alt='clube' src='/static/images/clubes/alvarenga.png'/>
+      <Typography align='center' variant='h4' component='p'>Alvarenga</Typography>
+    </Grid>
+  </Grid>
+  <Divider/><Divider/><Divider/><Divider/>
+  <Grid container className={classes.root}>
+    <Grid item xs={4}>
+      <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.pointsHome}</Typography>
+    </Grid>
+    <Grid item xs={4}>
+      <Typography align='center'>Pontos</Typography>
+      <LinearProgress variant="determinate" value={(data.pointsHome/(data.pointsHome+data.pointsOut))*100} />
+    </Grid>
+    <Grid item xs={4}>
+      <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.pointsOut}</Typography>
+    </Grid>
+  </Grid>
+  <Divider/>
+  <Grid container className={classes.root}>
+    <Grid item xs={4}>
+      <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.goalsHome}</Typography>
+    </Grid>
+    <Grid item xs={4}>
+      <Typography align='center'>Golos</Typography>
+      <LinearProgress variant="determinate" value={(data.goalsHome/(data.goalsHome+data.goalsOut))*100} />
+    </Grid>
+    <Grid item xs={4}>
+      <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.goalsOut}</Typography>
+    </Grid>
+  </Grid>
+  <Divider/>
+</Paper>
     }
   </>
   );
