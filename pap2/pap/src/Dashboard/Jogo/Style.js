@@ -24,15 +24,25 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '5px',
     borderRadius: '50%',
     //border: '5px solid #222',
-    width: window.innerWidth*0.25,
-  },
-  clubeName:{
-    fontSize: '1.3rem',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '1.7rem',
+    [theme.breakpoints.down('xs')]: {
+      width: '90px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '180px',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '2.2rem',
+      width: '240px',
+    },
+  },
+  clubeName:{
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.1rem',
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.5rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2.0rem',
     },
   },
   midleGroupText:{

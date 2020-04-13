@@ -33,18 +33,11 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
-
 
 function JogoComponent(props) {
   const {_jogo,historyPush} = props;
 
-  const theme = createMuiTheme();
-
-  
-
-  const classes = useStyles(theme);
+  const classes = useStyles();
 
   const jogo = {
     r: _jogo[0],
@@ -74,14 +67,14 @@ function JogoComponent(props) {
   <Grid container className={classes.topGroup}>
     <Grid item xs={4}>
       <img mx='auto' className={classes.clubeAvatar} alt='clube' src='/static/images/clubes/mourisca.jpg'/>
-      <Typography align='center' variant='h4' component='p'>Mourisca</Typography>
+      <Typography className={classes.clubeName} align='center' variant='h4' component='p'>Mourisca</Typography>
     </Grid>
     <Grid item xs={4}>
       <Typography align='center'></Typography>
     </Grid>
     <Grid item xs={4}>
       <img mx='auto' className={classes.clubeAvatar} alt='clube' src='/static/images/clubes/alvarenga.png'/>
-      <Typography align='center' variant='h4' component='p'>Alvarenga</Typography>
+      <Typography className={classes.clubeName} align='center' variant='h4' component='p'>Alvarenga</Typography>
     </Grid>
   </Grid>
   <Divider/><Divider/><Divider/><Divider/>
