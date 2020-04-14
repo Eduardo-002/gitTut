@@ -51,12 +51,18 @@ function JogoComponent(props) {
     c: _jogo[8]
   }
 
-  const data = {
-    pointsHome: 55,
-    pointsOut: 32,
-    goalsHome: 20,
-    goalsOut: 23
+  const data = [
+    {Nome:'Pontos',Home:55,Out:32},
+    {Nome:'Golos',Home:20,Out:20},
+    {Nome:'Faltas',Home:10,Out:8}
+  ];
+
+  const topGroupData = {
+    Home: data.reduce(((total,value)=>total+value.Home),0),
+    Out: data.reduce(((total,value)=>total+value.Out),0)
   }
+
+  console.log(topGroupData);
 
   
 
@@ -64,13 +70,39 @@ function JogoComponent(props) {
   <>
     {
 <Paper>
-  <Grid container className={classes.topGroup}>
+  <Grid container className={classes.topGroup} justify="center" alignItems="center">
     <Grid item xs={4}>
       <img mx='auto' className={classes.clubeAvatar} alt='clube' src='/static/images/clubes/mourisca.jpg'/>
       <Typography className={classes.clubeName} align='center' variant='h4' component='p'>Mourisca</Typography>
     </Grid>
     <Grid item xs={4}>
-      <Typography align='center'></Typography>
+      <Grid container justify="center" alignItems="center">
+        <Grid item xs={5}>
+          <Typography className={classes.topGroupPlace} align='center' component='p' variant='p'>Casa</Typography>
+          <Grid container alignItems="center" justify="center">
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResV]}>V</Paper></Grid>
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResV]}>V</Paper></Grid>
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResF]}>F</Paper></Grid>
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResF]}>F</Paper></Grid>
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResV]}>V</Paper></Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={2}>
+
+        </Grid>
+        <Grid item xs={5}>
+          <Typography className={classes.topGroupPlace} align='center' component='p' variant='p'>Fora</Typography>
+          <Grid container alignItems="center" justify="center">
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResF]}>F</Paper></Grid>
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResF]}>F</Paper></Grid>
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResV]}>V</Paper></Grid>
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResF]}>F</Paper></Grid>
+            <Grid item xs={4} md={2}><Paper className={[classes.topGroupLastRes,classes.topGroupLastResV]}>V</Paper></Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Typography className={classes.topGroupBar} align='center'>{Math.floor((topGroupData.Home/(topGroupData.Home+topGroupData.Out))*100)}% Win Rate</Typography>
+      <LinearProgress variant="determinate" value={(topGroupData.Home/(topGroupData.Home+topGroupData.Out))*100} />
     </Grid>
     <Grid item xs={4}>
       <img mx='auto' className={classes.clubeAvatar} alt='clube' src='/static/images/clubes/alvarenga.png'/>
@@ -78,7 +110,33 @@ function JogoComponent(props) {
     </Grid>
   </Grid>
   <Divider/><Divider/><Divider/><Divider/>
-  <Grid container className={classes.root}>
+  {
+    data.map((item,index)=><>
+      <Grid container className={classes.root} key={index}>
+        <Grid item xs={4}>
+          <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{item.Home}</Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography align='center'>{item.Nome}</Typography>
+          <LinearProgress variant="determinate" value={(item.Home/(item.Home+item.Out))*100} />
+        </Grid>
+        <Grid item xs={4}>
+          <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{item.Out}</Typography>
+        </Grid>
+      </Grid>
+      <Divider/>
+    </>)
+  }
+</Paper>
+    }
+  </>
+  );
+}
+
+export default JogoComponent;
+
+/*
+<Grid container className={classes.root}>
     <Grid item xs={4}>
       <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.pointsHome}</Typography>
     </Grid>
@@ -104,10 +162,4 @@ function JogoComponent(props) {
     </Grid>
   </Grid>
   <Divider/>
-</Paper>
-    }
-  </>
-  );
-}
-
-export default JogoComponent;
+  */

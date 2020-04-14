@@ -16,6 +16,32 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '10px',
     marginBottom: '10px',
   },
+  topGroupPlace: {
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '5px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginBottom: '10px',
+    },
+    [theme.breakpoints.up('md')]: {
+      marginBottom: '20px',
+    },
+  },
+  topGroupLastRes: {
+    background: "#aaa",
+    padding: 3,
+    borderRadius:'10%',
+    fontSize: '100%',
+    textAlign: 'center',
+    margin:1,
+    color: '#222'
+  },
+  topGroupLastResV: {
+    background: "#6c6",
+  },
+  topGroupLastResF: {
+    background: "#c66",
+  },
   clubeAvatar:{
     display: 'block',
     marginLeft: 'auto',
@@ -43,6 +69,18 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('md')]: {
       fontSize: '2.0rem',
+    },
+  },
+  topGroupBar: {
+    marginTop:'40px',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '0px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '40px',
+    },
+    [theme.breakpoints.up('md')]: {
+      marginTop: '80px',
     },
   },
   midleGroupText:{

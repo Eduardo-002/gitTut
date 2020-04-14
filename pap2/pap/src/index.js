@@ -4,6 +4,7 @@ import {Switch, Route, BrowserRouter as Router, Redirect} from 'react-router-dom
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import {useHistory} from 'react-router-dom';
+import 'typeface-roboto';
 
 import Home from './Home/Home';
 import Login from './Login/Login';
