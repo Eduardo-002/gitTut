@@ -60,7 +60,7 @@ const Dashboard = (props) => {
           window.location.pathname=='/dashboard/ranking' ?
           "ranking" :
           window.location.pathname=='/dashboard/qualificacoes' ?
-          <QualificacoesComponent /> :
+          <QualificacoesComponent historyPush={historyPush}/> :
           window.location.pathname=='/dashboard/jogos' ?
           <JogosComponent setJogoComponent={setJogoComponent} historyPush={historyPush}/> :
           window.location.pathname=='/dashboard/jogadores' ?

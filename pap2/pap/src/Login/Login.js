@@ -72,7 +72,7 @@ const Login = (props) => {
   }
 
   return(
-    <LoginForm lor={lor} classes={useStyles()} setInputValue={setInputValue} doLogin={doLogin} doRegist={doRegist}/>
+    <LoginForm lor={lor} classes={useStyles()} setInputValue={setInputValue} doLogin={doLogin} doRegist={doRegist} historyPush={historyPush}/>
   );
 }
 

@@ -18,7 +18,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const LoginForm = (props) => {
-  const {classes,lor,setInputValue,doLogin,doRegist} = props;
+  const {classes,lor,setInputValue,doLogin,doRegist,historyPush} = props;
 
   return(
     <Container component="main" maxWidth="xs">
@@ -116,7 +116,7 @@ const LoginForm = (props) => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Button href={lor?'/regist':'/login'} color='primary' size='small'>
+              <Button onClick={()=>{lor?historyPush('/regist'):historyPush('/login')}} color='primary' size='small'>
                 {lor?"Don't have an account? Sign Up":"Already have an account? Sign in"}
               </Button>              
             </Grid>

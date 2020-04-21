@@ -10,9 +10,23 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+const firebase = require('firebase');
+
 function QualificacoesComponent(props) {
-  
+  const {historyPush} = props;
   const classes = useStyles();
+  const [equipas,equipasSet] = React.useState([]);
+
+  firebase.auth().onAuthStateChanged(async _usr => {
+    if(!_usr)
+      historyPush('/login');
+    else {
+      await firebase.firestore().collection('Equipas').get().then(async res => {
+        const _equipas = res.docs.map(_doc => _doc.data());
+        await equipasSet(_equipas);
+      })
+    }
+  });
 
   function createData1(n, j, v, e, d, dg) {
     return {n, j, v, e, d, dg};
@@ -28,14 +42,8 @@ function QualificacoesComponent(props) {
     return {c,n,p,j,v,e,d,gm,gs,dg};
   }
 
-  const rows2 = [
-    createData2(1,'Fermentelos',57,22,18,3,1,51,16,'+'+35),
-    createData2(2,'Vista Alegre',54,22,17,3,2,59,16,'+'+43),
-    createData2(3,'Alvarenga',44,22,13,5,4,41,22,'+'+19),
-    createData2(4,'LAAC',42,22,12,6,4,43,28,'+'+15),
-    createData2(5,'P. Brandão',40,22,12,4,6,33,26,'+'+7),
-    createData2(6,'Valecambrense',38,22,11,5,6,36,24,'+'+7)
-  ];
+  const rows2 = equipas.map((equipa,index)=>createData2(index,equipa.Nome,equipa.P,equipa.J,equipa.V,equipa.E,equipa.D,equipa.GM,equipa.GS,equipa.DG)).sort((a,b)=>a.P>b.P?1:a.P<b.P?-1:0);
+  console.log(rows2);
 
   return (
   <>

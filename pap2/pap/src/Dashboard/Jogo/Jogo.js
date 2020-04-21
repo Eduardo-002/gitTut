@@ -134,32 +134,3 @@ function JogoComponent(props) {
 }
 
 export default JogoComponent;
-
-/*
-<Grid container className={classes.root}>
-    <Grid item xs={4}>
-      <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.pointsHome}</Typography>
-    </Grid>
-    <Grid item xs={4}>
-      <Typography align='center'>Pontos</Typography>
-      <LinearProgress variant="determinate" value={(data.pointsHome/(data.pointsHome+data.pointsOut))*100} />
-    </Grid>
-    <Grid item xs={4}>
-      <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.pointsOut}</Typography>
-    </Grid>
-  </Grid>
-  <Divider/>
-  <Grid container className={classes.root}>
-    <Grid item xs={4}>
-      <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.goalsHome}</Typography>
-    </Grid>
-    <Grid item xs={4}>
-      <Typography align='center'>Golos</Typography>
-      <LinearProgress variant="determinate" value={(data.goalsHome/(data.goalsHome+data.goalsOut))*100} />
-    </Grid>
-    <Grid item xs={4}>
-      <Typography className={classes.midleGroupText} align='center' variant='h5' component='p'>{data.goalsOut}</Typography>
-    </Grid>
-  </Grid>
-  <Divider/>
-  */
